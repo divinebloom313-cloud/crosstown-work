@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crosstown Work — Placement Confirmation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 min-h-screen p-4">
+  <div class="max-w-md mx-auto">
+
+    <div class="text-center mb-6 pt-4">
+      <span class="bg-green-700 text-white text-xs font-bold tracking-widest uppercase px-4 py-1 rounded-full">Crosstown Work</span>
+      <h1 class="text-2xl font-extrabold text-green-900 mt-4">Confirm Your Placement</h1>
+      <p class="text-green-700 text-sm mt-2">Review your placement details and confirm to get started.</p>
+    </div>
+
+    <!-- Placement Details -->
+    <div class="bg-white rounded-2xl shadow p-6 mb-4 border-l-4 border-green-600">
+      <p class="text-xs font-bold text-green-700 uppercase tracking-widest mb-4">Your Placement</p>
+      <h2 class="text-xl font-extrabold text-green-900">Billing Assistant</h2>
+      <p class="text-green-600 font-medium mt-1">Boston Medical Center</p>
+      <p class="text-gray-500 text-sm mt-1">850 Harrison Ave, Boston MA — South End</p>
+
+      <div class="border-t border-green-100 mt-4 pt-4 space-y-3">
+        <div class="flex justify-between">
+          <span class="text-sm text-gray-500">Start Date</span>
+          <span class="text-sm font-bold text-green-900">Monday, July 7, 2026</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-sm text-gray-500">Hours</span>
+          <span class="text-sm font-bold text-green-900">20 hrs/week</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-sm text-gray-500">Your Pay Rate</span>
+          <span class="text-sm font-bold text-green-900">$18.00/hr</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-sm text-gray-500">Employment Type</span>
+          <span class="text-sm font-bold text-green-900">W-2 Employee</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-sm text-gray-500">Weekly Earnings</span>
+          <span class="text-sm font-bold text-green-900">$360.00 est.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rights Disclosure -->
+    <div class="bg-green-50 rounded-2xl border border-green-200 p-5 mb-4">
+      <p class="text-xs font-bold text-green-700 uppercase tracking-widest mb-3">Massachusetts Temporary Workers Right to Know</p>
+      <div class="space-y-2 text-sm text-gray-600">
+        <p>✓ You are employed by Crosstown Work as a W-2 employee</p>
+        <p>✓ Your pay rate is $18.00/hour</p>
+        <p>✓ You are placed at Boston Medical Center</p>
+        <p>✓ You have the right to safe working conditions</p>
+        <p>✓ You have the right to report workplace issues without retaliation</p>
+        <p>✓ Training time is paid at your full hourly rate</p>
+      </div>
+    </div>
+
+    <!-- Confirm Button -->
+    <div class="bg-white rounded-2xl shadow p-6 mb-8">
+      <div class="flex items-start gap-3 mb-4">
+        <input type="checkbox" id="agree" class="mt-1 w-4 h-4 accent-green-700"/>
+        <label for="agree" class="text-sm text-gray-600">I have read and understand my rights as a temporary worker under Massachusetts law.</label>
+      </div>
+      <button class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 rounded-xl transition">
+        Confirm My Placement →
+      </button>
+      <p class="text-center text-xs text-green-500 mt-3">Your confirmation is timestamped and legally documented.</p>
+    </div>
+
+  </div>
+</body>
+</html>
