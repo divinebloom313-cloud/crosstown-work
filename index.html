@@ -92,7 +92,9 @@
       if (response.ok) {
         status.textContent = 'Submitted! Redirecting...';
         status.style.color = 'green';
-        setTimeout(() => { window.location.href = 'match.html'; }, 1500);
+        setTimeout(() => { 
+          window.location.href = 'match.html?degree=' + encodeURIComponent(degree); 
+        }, 1500);
       } else {
         const err = await response.text();
         status.textContent = 'Error: ' + err;
