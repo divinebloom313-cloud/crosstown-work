@@ -78,9 +78,15 @@
         headers: {
           'Content-Type': 'application/json',
           'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Prefer': 'return=minimal'
         },
-        body: JSON.stringify({ full_name, email, degree, availability })
+        body: JSON.stringify({ 
+          Full_name: full_name, 
+          Email: email, 
+          Degree: degree, 
+          Availability: availability 
+        })
       });
 
       if (response.ok) {
@@ -88,7 +94,8 @@
         status.style.color = 'green';
         setTimeout(() => { window.location.href = 'match.html'; }, 1500);
       } else {
-        status.textContent = 'Something went wrong. Try again.';
+        const err = await response.text();
+        status.textContent = 'Error: ' + err;
         status.style.color = 'red';
       }
     }
