@@ -3,69 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crosstown Work — Pre-Placement Training</title>
+  <title>Crosstown Work | Training</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-green-50 min-h-screen p-4">
   <div class="max-w-md mx-auto">
-
     <div class="text-center mb-6 pt-4">
       <span class="bg-green-700 text-white text-xs font-bold tracking-widest uppercase px-4 py-1 rounded-full">Crosstown Work</span>
       <h1 class="text-2xl font-extrabold text-green-900 mt-4">Pre-Placement Training</h1>
       <p class="text-green-700 text-sm mt-2">Complete your training before your first shift. You are being paid for this time.</p>
     </div>
 
-    <!-- Paid notice -->
-    <div class="bg-green-700 rounded-2xl p-4 mb-6 text-white text-center">
-      <p class="text-xs font-bold uppercase tracking-widest opacity-80">Your Training Pay</p>
-      <p class="text-3xl font-extrabold mt-1">$18.00/hr</p>
-      <p class="text-sm opacity-80 mt-1">Estimated 30 minutes · $9.00 total</p>
+    <div class="bg-green-700 rounded-2xl p-5 mb-6 text-center text-white">
+      <p class="text-xs font-bold uppercase tracking-widest mb-1">Your Training Pay</p>
+      <p class="text-4xl font-extrabold">$18.00/hr</p>
+      <p class="text-green-200 text-sm mt-1">Estimated 30 minutes · $9.00 total</p>
     </div>
 
-    <!-- Module 1 -->
-    <div class="bg-white rounded-2xl shadow p-6 mb-4 border-l-4 border-green-600">
-      <div class="flex justify-between items-center mb-3">
-        <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">Module 1</span>
-        <span class="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">✓ Complete</span>
-      </div>
-      <h2 class="text-lg font-bold text-green-900">Professional Workplace Standards</h2>
-      <p class="text-gray-500 text-sm mt-2">Punctuality, communication, dress code, and workplace conduct expectations.</p>
-      <div class="mt-3 bg-green-50 rounded-xl p-3">
-        <p class="text-xs text-green-700 font-medium">Completed · 10 min · Timestamp recorded</p>
-      </div>
-    </div>
+    <div id="modules"></div>
 
-    <!-- Module 2 -->
-    <div class="bg-white rounded-2xl shadow p-6 mb-4 border-l-4 border-green-600">
-      <div class="flex justify-between items-center mb-3">
-        <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">Module 2</span>
-        <span class="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">✓ Complete</span>
-      </div>
-      <h2 class="text-lg font-bold text-green-900">Confidentiality & Privacy</h2>
-      <p class="text-gray-500 text-sm mt-2">Understanding HIPAA basics, patient privacy, and handling sensitive information at your placement site.</p>
-      <div class="mt-3 bg-green-50 rounded-xl p-3">
-        <p class="text-xs text-green-700 font-medium">Completed · 10 min · Timestamp recorded</p>
-      </div>
-    </div>
+    <a href="track.html" id="finish-btn" class="hidden block w-full bg-green-700 text-white font-bold py-3 rounded-xl text-center text-sm mt-4">
+      Complete Training & View Placement →
+    </a>
 
-    <!-- Module 3 - Active -->
-    <div class="bg-white rounded-2xl shadow p-6 mb-6 border-l-4 border-yellow-400">
-      <div class="flex justify-between items-center mb-3">
-        <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-3 py-1 rounded-full">Module 3</span>
-        <span class="bg-yellow-400 text-white text-xs font-bold px-3 py-1 rounded-full">In Progress</span>
-      </div>
-      <h2 class="text-lg font-bold text-green-900">Your Rights as a W-2 Worker</h2>
-      <p class="text-gray-500 text-sm mt-2">Massachusetts Temporary Workers Right to Know, your pay rights, and how to report workplace issues.</p>
-      <div class="mt-3 bg-yellow-50 rounded-xl p-3">
-        <p class="text-xs text-yellow-700 font-medium">In progress · 10 min remaining</p>
-      </div>
-      <button class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 rounded-xl mt-4 transition">
-        <a href="confirm.html"><a href="confirm.html">Continue Training →</a></a>
-      </button>
-    </div>
-
-    <p class="text-center text-xs text-green-500 mb-8">All training completions are timestamped and legally documented.</p>
-
+    <p class="text-center text-xs text-green-600 mt-4">All training completions are timestamped and legally documented.</p>
   </div>
+
+  <script>
+    const modules = [
+      {
+        id: 1,
+        title: "Professional Workplace Standards",
+        desc: "Punctuality, communication, dress code, and workplace conduct expectations.",
+        content: "Welcome to Module 1. As a Crosstown Work employee you are expected to arrive on time or early for every shift. Dress professionally — business casual unless told otherwise. Communicate clearly with your supervisor. Do not use your phone during work hours unless approved. Treat all coworkers and clients with respect at all times."
+      },
+      {
+        id: 2,
+        title: "Confidentiality & Privacy",
+        desc: "Understanding HIPAA basics, patient privacy, and handling sensitive information.",
+        content: "Module 2: Confidentiality. You may encounter private information about clients, patients, or employees. You are legally required to keep this information private. Do not share names, records, or details with anyone outside your role. HIPAA law protects patient health information — violations can result in termination and legal action. When in doubt, ask your supervisor before sharing any information."
+      },
+      {
+        id: 3,
+        title: "Your Rights as a W-2 Worker",
+        desc: "Massachusetts Temporary Workers Right to Know, your pay rights, and how to report workplace issues.",
+        content: "Module 3: Your Rights. You are a W-2 employee of Crosstown Work — not a contractor. You are entitled to minimum wage ($15/hr minimum in Massachusetts), workers compensation, and a safe workplace. You may not be charged any fees for this placement. You have the right to know your worksite employer before your first shift. If you experience harassment or unsafe conditions, contact Crosstown Work immediately."
+      }
+    ];
+
+    const completed = new Set(JSON.parse(localStorage.getItem('completed') || '[]'));
+
+    function save() {
+      localStorage.setItem('completed', JSON.stringify([...completed]));
+    }
+
+    function render() {
+      const container = document.getElementById('modules');
+      container.innerHTML = '';
+      modules.forEach((mod, i) => {
+        const done = completed.has(mod.id);
+        const locked = i > 0 && !completed.has(modules[i-1].id);
+        container.innerHTML += `
+          <div class="bg-white rounded-2xl shadow p-5 mb-4 border-l-4 ${done ? 'border-green-500' : locked ? 'border-gray-200' : 'border-yellow-400'}">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-bold px-3 py-1 rounded-full ${done ? 'bg-green-100 text-green-700' : locked ? 'bg-gray-100 text-gray-400' : 'bg-yellow-100 text-yellow-700'}">Module ${mod.id}</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full ${done ? 'bg-green-600 text-white' : locked ? 'bg-gray-100 text-gray-400' : 'bg-yellow-400 text-white'}">${done ? '✓ Complete' : locked ? 'Locked' : 'Start'}</span>
+            </div>
+            <h2 class="font-extrabold text-green-900 text-lg">${mod.title}</h2>
+            <p class="text-gray-500 text-sm mt-1 mb-3">${mod.desc}</p>
+            ${!locked ? `
+              <div class="bg-green-50 rounded-xl p-4 text-sm text-green-900 mb-3">${mod.content}</div>
+              ${!done ? `<button onclick="complete(${mod.id})" class="w-full bg-green-700 text-white font-bold py-2 rounded-xl text-sm">Mark as Complete ✓</button>` : `<p class="text-center text-xs text-green-600">Completed · Timestamp recorded</p>`}
+            ` : `<p class="text-center text-xs text-gray-400">Complete the previous module to unlock</p>`}
+          </div>`;
+      });
+
+      if (completed.size === modules.length) {
+        document.getElementById('finish-btn').classList.remove('hidden');
+      }
+    }
+
+    function complete(id) {
+      completed.add(id);
+      save();
+      render();
+    }
+
+    render();
+  </script>
 </body>
 </html>
