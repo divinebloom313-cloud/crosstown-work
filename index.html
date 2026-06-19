@@ -36,6 +36,15 @@
         </select>
       </div>
       <div>
+        <label class="block text-xs font-bold text-green-700 uppercase tracking-wide mb-1">Work Type</label>
+        <select id="work_type" class="w-full border border-green-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
+          <option value="">Select work type</option>
+          <option>In-Person</option>
+          <option>Remote</option>
+          <option>Hybrid</option>
+        </select>
+      </div>
+      <div>
         <label class="block text-xs font-bold text-green-700 uppercase tracking-wide mb-1">Availability</label>
         <select id="availability" class="w-full border border-green-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
           <option value="">Select availability</option>
@@ -61,10 +70,11 @@
       const full_name = document.getElementById('full_name').value;
       const email = document.getElementById('email').value;
       const degree = document.getElementById('degree').value;
+      const work_type = document.getElementById('work_type').value;
       const availability = document.getElementById('availability').value;
       const status = document.getElementById('status');
 
-      if (!full_name || !email || !degree || !availability) {
+      if (!full_name || !email || !degree || !work_type || !availability) {
         status.textContent = 'Please fill out all fields.';
         status.style.color = 'red';
         return;
@@ -84,8 +94,8 @@
         body: JSON.stringify({ 
           Full_name: full_name, 
           Email: email, 
-          Degree: degree, 
-          Availability: availability 
+          Degree: degree,
+          Availability: availability
         })
       });
 
@@ -93,7 +103,7 @@
         status.textContent = 'Submitted! Redirecting...';
         status.style.color = 'green';
         setTimeout(() => { 
-          window.location.href = 'match.html?degree=' + encodeURIComponent(degree); 
+          window.location.href = 'match.html?degree=' + encodeURIComponent(degree) + '&work_type=' + encodeURIComponent(work_type); 
         }, 1500);
       } else {
         const err = await response.text();
