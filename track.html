@@ -16,7 +16,7 @@
 
     <div id="placement-info" class="bg-white rounded-2xl shadow p-6 mb-4 border-l-4 border-green-600">
       <p class="text-xs font-bold text-green-700 uppercase tracking-widest mb-3">Current Placement</p>
-      <h2 id="job-title" class="text-xl font-extrabold text-green-900">Your Placement</h2>
+      <h2 id="job-title" class="text-xl font-extrabold text-green-900"></h2>
       <p id="job-employer" class="text-green-600 font-semibold mb-1"></p>
       <p id="job-location" class="text-gray-500 text-sm"></p>
     </div>
@@ -69,9 +69,9 @@
       </div>
     </div>
 
-    <a href="index.html" class="block w-full bg-green-700 text-white font-bold py-3 rounded-xl text-center text-sm mb-6">
+    <button onclick="startFresh()" class="block w-full bg-green-700 text-white font-bold py-3 rounded-xl text-center text-sm mb-6">
       Find My Next Match →
-    </a>
+    </button>
   </div>
 
   <script>
@@ -90,6 +90,14 @@
         b.classList.remove('bg-green-700', 'text-white', 'border-green-700');
       });
       btn.classList.add('bg-green-700', 'text-white', 'border-green-700');
+    }
+
+    function startFresh() {
+      localStorage.removeItem('job');
+      localStorage.removeItem('employer');
+      localStorage.removeItem('location');
+      localStorage.removeItem('completed');
+      window.location.href = 'index.html';
     }
   </script>
 </body>
