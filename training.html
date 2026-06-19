@@ -22,7 +22,7 @@
 
     <div id="modules"></div>
 
-    <a href="track.html" id="finish-btn" class="hidden block w-full bg-green-700 text-white font-bold py-3 rounded-xl text-center text-sm mt-4">
+    <a id="finish-btn" href="#" class="hidden block w-full bg-green-700 text-white font-bold py-3 rounded-xl text-center text-sm mt-4">
       Complete Training & View Placement →
     </a>
 
@@ -30,24 +30,29 @@
   </div>
 
   <script>
+    const params = new URLSearchParams(window.location.search);
+    const job = params.get('job') || localStorage.getItem('job') || '';
+    const employer = params.get('employer') || localStorage.getItem('employer') || '';
+    const location = params.get('location') || localStorage.getItem('location') || '';
+
     const modules = [
       {
         id: 1,
         title: "Professional Workplace Standards",
         desc: "Punctuality, communication, dress code, and workplace conduct expectations.",
-        content: "Welcome to Module 1. As a Crosstown Work employee you are expected to arrive on time or early for every shift. Dress professionally — business casual unless told otherwise. Communicate clearly with your supervisor. Do not use your phone during work hours unless approved. Treat all coworkers and clients with respect at all times."
+        content: "As a Crosstown Work employee you are expected to arrive on time or early for every shift. Dress professionally — business casual unless told otherwise. Communicate clearly with your supervisor. Do not use your phone during work hours unless approved. Treat all coworkers and clients with respect at all times."
       },
       {
         id: 2,
         title: "Confidentiality & Privacy",
         desc: "Understanding HIPAA basics, patient privacy, and handling sensitive information.",
-        content: "Module 2: Confidentiality. You may encounter private information about clients, patients, or employees. You are legally required to keep this information private. Do not share names, records, or details with anyone outside your role. HIPAA law protects patient health information — violations can result in termination and legal action. When in doubt, ask your supervisor before sharing any information."
+        content: "You may encounter private information about clients, patients, or employees. You are legally required to keep this information private. Do not share names, records, or details with anyone outside your role. HIPAA law protects patient health information — violations can result in termination and legal action. When in doubt, ask your supervisor before sharing any information."
       },
       {
         id: 3,
         title: "Your Rights as a W-2 Worker",
         desc: "Massachusetts Temporary Workers Right to Know, your pay rights, and how to report workplace issues.",
-        content: "Module 3: Your Rights. You are a W-2 employee of Crosstown Work — not a contractor. You are entitled to minimum wage ($15/hr minimum in Massachusetts), workers compensation, and a safe workplace. You may not be charged any fees for this placement. You have the right to know your worksite employer before your first shift. If you experience harassment or unsafe conditions, contact Crosstown Work immediately."
+        content: "You are a W-2 employee of Crosstown Work — not a contractor. You are entitled to minimum wage ($15/hr minimum in Massachusetts), workers compensation, and a safe workplace. You may not be charged any fees for this placement. You have the right to know your worksite employer before your first shift. If you experience harassment or unsafe conditions, contact Crosstown Work immediately."
       }
     ];
 
@@ -79,7 +84,9 @@
       });
 
       if (completed.size === modules.length) {
-        document.getElementById('finish-btn').classList.remove('hidden');
+        const btn = document.getElementById('finish-btn');
+        btn.classList.remove('hidden');
+        btn.href = `track.html?job=${encodeURIComponent(job)}&employer=${encodeURIComponent(employer)}&location=${encodeURIComponent(location)}`;
       }
     }
 
