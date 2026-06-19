@@ -20,9 +20,45 @@
       <p class="text-green-200 text-sm mt-1">Estimated 30 minutes · $9.00 total</p>
     </div>
 
-    <div id="modules"></div>
+    <!-- Module 1 -->
+    <div id="mod1" class="bg-white rounded-2xl shadow p-5 mb-4 border-l-4 border-yellow-400">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-xs font-bold px-3 py-1 rounded-full bg-yellow-100 text-yellow-700">Module 1</span>
+        <span id="status1" class="text-xs font-bold px-3 py-1 rounded-full bg-yellow-400 text-white">Start</span>
+      </div>
+      <h2 class="font-extrabold text-green-900 text-lg">Professional Workplace Standards</h2>
+      <p class="text-gray-500 text-sm mt-1 mb-3">Punctuality, communication, dress code, and workplace conduct expectations.</p>
+      <div class="bg-green-50 rounded-xl p-4 text-sm text-green-900 mb-3">As a Crosstown Work employee you are expected to arrive on time or early for every shift. Dress professionally — business casual unless told otherwise. Communicate clearly with your supervisor. Do not use your phone during work hours unless approved. Treat all coworkers and clients with respect at all times.</div>
+      <button id="btn1" onclick="complete(1)" class="w-full bg-green-700 text-white font-bold py-2 rounded-xl text-sm">Mark as Complete ✓</button>
+    </div>
 
-    <a id="finish-btn" href="#" class="hidden block w-full bg-green-700 text-white font-bold py-3 rounded-xl text-center text-sm mt-4">
+    <!-- Module 2 -->
+    <div id="mod2" class="bg-white rounded-2xl shadow p-5 mb-4 border-l-4 border-gray-200">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-400">Module 2</span>
+        <span id="status2" class="text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-400">Locked</span>
+      </div>
+      <h2 class="font-extrabold text-green-900 text-lg">Confidentiality & Privacy</h2>
+      <p class="text-gray-500 text-sm mt-1 mb-3">Understanding HIPAA basics, patient privacy, and handling sensitive information.</p>
+      <div id="content2" class="hidden bg-green-50 rounded-xl p-4 text-sm text-green-900 mb-3">You may encounter private information about clients, patients, or employees. You are legally required to keep this information private. Do not share names, records, or details with anyone outside your role. HIPAA law protects patient health information — violations can result in termination and legal action. When in doubt, ask your supervisor before sharing any information.</div>
+      <div id="locked2"><p class="text-center text-xs text-gray-400">Complete Module 1 to unlock</p></div>
+      <button id="btn2" onclick="complete(2)" class="hidden w-full bg-green-700 text-white font-bold py-2 rounded-xl text-sm">Mark as Complete ✓</button>
+    </div>
+
+    <!-- Module 3 -->
+    <div id="mod3" class="bg-white rounded-2xl shadow p-5 mb-4 border-l-4 border-gray-200">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-400">Module 3</span>
+        <span id="status3" class="text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-400">Locked</span>
+      </div>
+      <h2 class="font-extrabold text-green-900 text-lg">Your Rights as a W-2 Worker</h2>
+      <p class="text-gray-500 text-sm mt-1 mb-3">Massachusetts Temporary Workers Right to Know, your pay rights, and how to report workplace issues.</p>
+      <div id="content3" class="hidden bg-green-50 rounded-xl p-4 text-sm text-green-900 mb-3">You are a W-2 employee of Crosstown Work — not a contractor. You are entitled to minimum wage ($15/hr minimum in Massachusetts), workers compensation, and a safe workplace. You may not be charged any fees for this placement. You have the right to know your worksite employer before your first shift. If you experience harassment or unsafe conditions, contact Crosstown Work immediately.</div>
+      <div id="locked3"><p class="text-center text-xs text-gray-400">Complete Module 2 to unlock</p></div>
+      <button id="btn3" onclick="complete(3)" class="hidden w-full bg-green-700 text-white font-bold py-2 rounded-xl text-sm">Mark as Complete ✓</button>
+    </div>
+
+    <a id="finish-btn" href="track.html" class="hidden block w-full bg-green-700 text-white font-bold py-3 rounded-xl text-center text-sm mt-4">
       Complete Training & View Placement →
     </a>
 
@@ -30,78 +66,37 @@
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const job = params.get('job') || localStorage.getItem('job') || '';
-    const employer = params.get('employer') || localStorage.getItem('employer') || '';
-    const location = params.get('location') || localStorage.getItem('location') || '';
-
-    const modules = [
-      {
-        id: 1,
-        title: "Professional Workplace Standards",
-        desc: "Punctuality, communication, dress code, and workplace conduct expectations.",
-        content: "As a Crosstown Work employee you are expected to arrive on time or early for every shift. Dress professionally — business casual unless told otherwise. Communicate clearly with your supervisor. Do not use your phone during work hours unless approved. Treat all coworkers and clients with respect at all times."
-      },
-      {
-        id: 2,
-        title: "Confidentiality & Privacy",
-        desc: "Understanding HIPAA basics, patient privacy, and handling sensitive information.",
-        content: "You may encounter private information about clients, patients, or employees. You are legally required to keep this information private. Do not share names, records, or details with anyone outside your role. HIPAA law protects patient health information — violations can result in termination and legal action. When in doubt, ask your supervisor before sharing any information."
-      },
-      {
-        id: 3,
-        title: "Your Rights as a W-2 Worker",
-        desc: "Massachusetts Temporary Workers Right to Know, your pay rights, and how to report workplace issues.",
-        content: "You are a W-2 employee of Crosstown Work — not a contractor. You are entitled to minimum wage ($15/hr minimum in Massachusetts), workers compensation, and a safe workplace. You may not be charged any fees for this placement. You have the right to know your worksite employer before your first shift. If you experience harassment or unsafe conditions, contact Crosstown Work immediately."
-      }
-    ];
-
-    const completed = new Set(JSON.parse(localStorage.getItem('completed') || '[]'));
-
-    function save() {
-      localStorage.setItem('completed', JSON.stringify([...completed]));
-    }
-
-    function render() {
-      const container = document.getElementById('modules');
-      container.innerHTML = '';
-      modules.forEach(function(mod, i) {
-        const done = completed.has(mod.id);
-        const locked = i > 0 && !completed.has(modules[i-1].id);
-        let statusClass = done ? 'border-green-500' : locked ? 'border-gray-200' : 'border-yellow-400';
-        let badgeClass = done ? 'bg-green-100 text-green-700' : locked ? 'bg-gray-100 text-gray-400' : 'bg-yellow-100 text-yellow-700';
-        let statusText = done ? '✓ Complete' : locked ? 'Locked' : 'Start';
-        let statusBadge = done ? 'bg-green-600 text-white' : locked ? 'bg-gray-100 text-gray-400' : 'bg-yellow-400 text-white';
-
-        let inner = '';
-        if (!locked) {
-          inner += '<div class="bg-green-50 rounded-xl p-4 text-sm text-green-900 mb-3">' + mod.content + '</div>';
-          if (!done) {
-            inner += '<button onclick="complete(' + mod.id + ')" class="w-full bg-green-700 text-white font-bold py-2 rounded-xl text-sm">Mark as Complete ✓</button>';
-          } else {
-            inner += '<p class="text-center text-xs text-green-600">Completed · Timestamp recorded</p>';
-          }
-        } else {
-          inner += '<p class="text-center text-xs text-gray-400">Complete the previous module to unlock</p>';
-        }
-
-        container.innerHTML += '<div class="bg-white rounded-2xl shadow p-5 mb-4 border-l-4 ' + statusClass + '"><div class="flex justify-between items-center mb-2"><span class="text-xs font-bold px-3 py-1 rounded-full ' + badgeClass + '">Module ' + mod.id + '</span><span class="text-xs font-bold px-3 py-1 rounded-full ' + statusBadge + '">' + statusText + '</span></div><h2 class="font-extrabold text-green-900 text-lg">' + mod.title + '</h2><p class="text-gray-500 text-sm mt-1 mb-3">' + mod.desc + '</p>' + inner + '</div>';
-      });
-
-      if (completed.size === modules.length) {
-        const btn = document.getElementById('finish-btn');
-        btn.classList.remove('hidden');
-        btn.href = 'track.html?job=' + encodeURIComponent(job) + '&employer=' + encodeURIComponent(employer) + '&location=' + encodeURIComponent(location);
-      }
-    }
+    var done = {1: false, 2: false, 3: false};
 
     function complete(id) {
-      completed.add(id);
-      save();
-      render();
-    }
+      done[id] = true;
+      document.getElementById('btn' + id).classList.add('hidden');
+      document.getElementById('status' + id).textContent = '✓ Complete';
+      document.getElementById('status' + id).className = 'text-xs font-bold px-3 py-1 rounded-full bg-green-600 text-white';
+      document.getElementById('mod' + id).className = 'bg-white rounded-2xl shadow p-5 mb-4 border-l-4 border-green-500';
 
-    render();
+      if (id === 1) {
+        document.getElementById('locked2').classList.add('hidden');
+        document.getElementById('content2').classList.remove('hidden');
+        document.getElementById('btn2').classList.remove('hidden');
+        document.getElementById('status2').textContent = 'Start';
+        document.getElementById('status2').className = 'text-xs font-bold px-3 py-1 rounded-full bg-yellow-400 text-white';
+        document.getElementById('mod2').className = 'bg-white rounded-2xl shadow p-5 mb-4 border-l-4 border-yellow-400';
+      }
+
+      if (id === 2) {
+        document.getElementById('locked3').classList.add('hidden');
+        document.getElementById('content3').classList.remove('hidden');
+        document.getElementById('btn3').classList.remove('hidden');
+        document.getElementById('status3').textContent = 'Start';
+        document.getElementById('status3').className = 'text-xs font-bold px-3 py-1 rounded-full bg-yellow-400 text-white';
+        document.getElementById('mod3').className = 'bg-white rounded-2xl shadow p-5 mb-4 border-l-4 border-yellow-400';
+      }
+
+      if (id === 3) {
+        document.getElementById('finish-btn').classList.remove('hidden');
+      }
+    }
   </script>
 </body>
 </html>
