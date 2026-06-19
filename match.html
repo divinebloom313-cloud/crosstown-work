@@ -17,66 +17,140 @@
   </div>
 
   <script>
-    const jobs = {
-      "Business / Finance": [
-        { title: "Billing Assistant", employer: "Boston Medical Center", location: "850 Harrison Ave, Boston MA — South End", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Budget Tracking Assistant", employer: "City of Boston — Mayor's Office", location: "1 City Hall Plaza, Boston MA — Downtown", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Accounts Payable Clerk", employer: "Brigham and Women's Hospital", location: "75 Francis St, Boston MA — Longwood", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Healthcare / Nursing": [
-        { title: "Patient Care Coordinator", employer: "Boston Children's Hospital", location: "300 Longwood Ave, Boston MA — Longwood", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Health Records Clerk", employer: "Mass General Hospital", location: "55 Fruit St, Boston MA — West End", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Community Health Worker", employer: "Boston Public Health Commission", location: "1010 Massachusetts Ave, Boston MA — Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Education / Social Work": [
-        { title: "Program Assistant", employer: "Boston Public Schools", location: "2300 Washington St, Boston MA — Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Case Management Assistant", employer: "DHCD — City of Boston", location: "26 Court St, Boston MA — Downtown", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Youth Program Coordinator", employer: "Boys & Girls Club of Boston", location: "50 Congress St, Boston MA — Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Legal / Government": [
-        { title: "Legal Administrative Assistant", employer: "Suffolk County DA's Office", location: "1 Bulfinch Place, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Policy Research Assistant", employer: "City of Boston — City Council", location: "1 City Hall Plaza, Boston MA — Government Center", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Compliance Clerk", employer: "Massachusetts State Ethics Commission", location: "One Ashburton Place, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Technology / Engineering": [
-        { title: "IT Support Technician", employer: "Boston Public Schools", location: "2300 Washington St, Boston MA — Citywide", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Data Entry Analyst", employer: "Mass General Brigham", location: "399 Revolution Dr, Somerville MA — Assembly Row", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Systems Support Clerk", employer: "City of Boston — DoIT", location: "1 City Hall Plaza, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Arts / Communications": [
-        { title: "Communications Assistant", employer: "Boston Arts Commission", location: "1 City Hall Plaza, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Marketing Coordinator", employer: "Greater Boston Convention & Visitors Bureau", location: "2 Copley Place, Boston MA — Back Bay", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Media Relations Assistant", employer: "WGBH Boston", location: "1 Guest St, Boston MA — Brighton", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Other": [
-        { title: "Administrative Assistant", employer: "City of Boston", location: "1 City Hall Plaza, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Office Coordinator", employer: "Boston Housing Authority", location: "52 Chauncy St, Boston MA — Downtown", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Community Liaison", employer: "Boston Neighborhood Network", location: "3025 Washington St, Boston MA — Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match" }
-      ]
+    const allJobs = {
+      "Business / Finance": {
+        "In-Person": [
+          { title: "Billing Assistant", employer: "Boston Medical Center", location: "850 Harrison Ave, Boston MA — South End", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "In-Person" },
+          { title: "Budget Tracking Assistant", employer: "City of Boston — Mayor's Office", location: "1 City Hall Plaza, Boston MA — Downtown", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" },
+          { title: "Accounts Payable Clerk", employer: "Brigham and Women's Hospital", location: "75 Francis St, Boston MA — Longwood", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" }
+        ],
+        "Remote": [
+          { title: "Remote Bookkeeping Assistant", employer: "Crosstown Work Partner — Finance", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Remote" },
+          { title: "Virtual Billing Coordinator", employer: "Mass Health Network", location: "Remote — Work from home", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" },
+          { title: "Remote Data Entry Specialist", employer: "Boston Financial Group", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" }
+        ],
+        "Hybrid": [
+          { title: "Finance Operations Assistant", employer: "City of Boston — Budget Office", location: "Hybrid — 3 days onsite, Downtown", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Hybrid" },
+          { title: "Hybrid Billing Specialist", employer: "Mass General Brigham", location: "Hybrid — 2 days onsite, Longwood", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" },
+          { title: "Accounts Assistant", employer: "Boston Housing Authority", location: "Hybrid — 3 days onsite, Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" }
+        ]
+      },
+      "Healthcare / Nursing": {
+        "In-Person": [
+          { title: "Patient Care Coordinator", employer: "Boston Children's Hospital", location: "300 Longwood Ave, Boston MA — Longwood", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "In-Person" },
+          { title: "Health Records Clerk", employer: "Mass General Hospital", location: "55 Fruit St, Boston MA — West End", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" },
+          { title: "Community Health Worker", employer: "Boston Public Health Commission", location: "1010 Massachusetts Ave, Boston MA — Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" }
+        ],
+        "Remote": [
+          { title: "Remote Patient Intake Coordinator", employer: "Mass General Brigham", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Remote" },
+          { title: "Virtual Health Records Specialist", employer: "Boston Medical Center", location: "Remote — Work from home", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" },
+          { title: "Telehealth Support Assistant", employer: "Mass Health Network", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" }
+        ],
+        "Hybrid": [
+          { title: "Hybrid Care Coordinator", employer: "Boston Children's Hospital", location: "Hybrid — 3 days onsite, Longwood", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Hybrid" },
+          { title: "Health Program Assistant", employer: "Boston Public Health Commission", location: "Hybrid — 2 days onsite, Roxbury", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" },
+          { title: "Hybrid Medical Records Clerk", employer: "Mass General Hospital", location: "Hybrid — 3 days onsite, West End", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" }
+        ]
+      },
+      "Education / Social Work": {
+        "In-Person": [
+          { title: "Program Assistant", employer: "Boston Public Schools", location: "2300 Washington St, Boston MA — Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "In-Person" },
+          { title: "Case Management Assistant", employer: "DHCD — City of Boston", location: "26 Court St, Boston MA — Downtown", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" },
+          { title: "Youth Program Coordinator", employer: "Boys & Girls Club of Boston", location: "50 Congress St, Boston MA — Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" }
+        ],
+        "Remote": [
+          { title: "Remote Student Support Specialist", employer: "Boston Public Schools", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Remote" },
+          { title: "Virtual Case Manager Assistant", employer: "DHCD — City of Boston", location: "Remote — Work from home", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" },
+          { title: "Online Program Coordinator", employer: "Boston After School & Beyond", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" }
+        ],
+        "Hybrid": [
+          { title: "Hybrid Program Assistant", employer: "Boston Public Schools", location: "Hybrid — 3 days onsite, Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Hybrid" },
+          { title: "Hybrid Case Assistant", employer: "DHCD — City of Boston", location: "Hybrid — 2 days onsite, Downtown", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" },
+          { title: "Community Outreach Coordinator", employer: "Boys & Girls Club of Boston", location: "Hybrid — 3 days onsite, Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" }
+        ]
+      },
+      "Legal / Government": {
+        "In-Person": [
+          { title: "Legal Administrative Assistant", employer: "Suffolk County DA's Office", location: "1 Bulfinch Place, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "In-Person" },
+          { title: "Policy Research Assistant", employer: "City of Boston — City Council", location: "1 City Hall Plaza, Boston MA — Government Center", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" },
+          { title: "Compliance Clerk", employer: "Massachusetts State Ethics Commission", location: "One Ashburton Place, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" }
+        ],
+        "Remote": [
+          { title: "Remote Legal Research Assistant", employer: "Suffolk County DA's Office", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Remote" },
+          { title: "Virtual Policy Analyst", employer: "City of Boston — City Council", location: "Remote — Work from home", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" },
+          { title: "Remote Compliance Assistant", employer: "Massachusetts State Ethics Commission", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" }
+        ],
+        "Hybrid": [
+          { title: "Hybrid Legal Assistant", employer: "Suffolk County DA's Office", location: "Hybrid — 3 days onsite, Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Hybrid" },
+          { title: "Hybrid Policy Researcher", employer: "City of Boston — City Council", location: "Hybrid — 2 days onsite, Government Center", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" },
+          { title: "Hybrid Compliance Clerk", employer: "Massachusetts State Ethics Commission", location: "Hybrid — 3 days onsite, Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" }
+        ]
+      },
+      "Technology / Engineering": {
+        "In-Person": [
+          { title: "IT Support Technician", employer: "Boston Public Schools", location: "2300 Washington St, Boston MA — Citywide", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "In-Person" },
+          { title: "Data Entry Analyst", employer: "Mass General Brigham", location: "399 Revolution Dr, Somerville MA", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" },
+          { title: "Systems Support Clerk", employer: "City of Boston — DoIT", location: "1 City Hall Plaza, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" }
+        ],
+        "Remote": [
+          { title: "Remote IT Support Specialist", employer: "Boston Public Schools", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Remote" },
+          { title: "Remote Data Analyst", employer: "Mass General Brigham", location: "Remote — Work from home", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" },
+          { title: "Virtual Systems Assistant", employer: "City of Boston — DoIT", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" }
+        ],
+        "Hybrid": [
+          { title: "Hybrid IT Technician", employer: "Boston Public Schools", location: "Hybrid — 3 days onsite, Citywide", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Hybrid" },
+          { title: "Hybrid Data Analyst", employer: "Mass General Brigham", location: "Hybrid — 2 days onsite, Somerville", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" },
+          { title: "Hybrid Systems Clerk", employer: "City of Boston — DoIT", location: "Hybrid — 3 days onsite, Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" }
+        ]
+      },
+      "Arts / Communications": {
+        "In-Person": [
+          { title: "Communications Assistant", employer: "Boston Arts Commission", location: "1 City Hall Plaza, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "In-Person" },
+          { title: "Marketing Coordinator", employer: "Greater Boston Convention & Visitors Bureau", location: "2 Copley Place, Boston MA — Back Bay", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" },
+          { title: "Media Relations Assistant", employer: "WGBH Boston", location: "1 Guest St, Boston MA — Brighton", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" }
+        ],
+        "Remote": [
+          { title: "Remote Social Media Coordinator", employer: "Boston Arts Commission", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Remote" },
+          { title: "Virtual Marketing Assistant", employer: "Greater Boston Convention & Visitors Bureau", location: "Remote — Work from home", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" },
+          { title: "Remote Content Creator", employer: "WGBH Boston", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" }
+        ],
+        "Hybrid": [
+          { title: "Hybrid Communications Assistant", employer: "Boston Arts Commission", location: "Hybrid — 2 days onsite, Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Hybrid" },
+          { title: "Hybrid Marketing Coordinator", employer: "Greater Boston Convention & Visitors Bureau", location: "Hybrid — 3 days onsite, Back Bay", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" },
+          { title: "Hybrid Media Assistant", employer: "WGBH Boston", location: "Hybrid — 2 days onsite, Brighton", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" }
+        ]
+      },
+      "Other": {
+        "In-Person": [
+          { title: "Administrative Assistant", employer: "City of Boston", location: "1 City Hall Plaza, Boston MA — Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "In-Person" },
+          { title: "Office Coordinator", employer: "Boston Housing Authority", location: "52 Chauncy St, Boston MA — Downtown", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" },
+          { title: "Community Liaison", employer: "Boston Neighborhood Network", location: "3025 Washington St, Boston MA — Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "In-Person" }
+        ],
+        "Remote": [
+          { title: "Remote Administrative Assistant", employer: "City of Boston", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Remote" },
+          { title: "Virtual Office Coordinator", employer: "Boston Housing Authority", location: "Remote — Work from home", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" },
+          { title: "Remote Community Outreach", employer: "Boston Neighborhood Network", location: "Remote — Work from home", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Remote" }
+        ],
+        "Hybrid": [
+          { title: "Hybrid Administrative Assistant", employer: "City of Boston", location: "Hybrid — 3 days onsite, Downtown", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Best Match", type: "Hybrid" },
+          { title: "Hybrid Office Coordinator", employer: "Boston Housing Authority", location: "Hybrid — 2 days onsite, Downtown", hours: "25 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" },
+          { title: "Hybrid Community Liaison", employer: "Boston Neighborhood Network", location: "Hybrid — 3 days onsite, Roxbury", hours: "20 hrs/week", wage: "$34.00/hr", badge: "Strong Match", type: "Hybrid" }
+        ]
+      }
     };
 
     const params = new URLSearchParams(window.location.search);
-    let degree = params.get('degree') || 'Other';
-    const matched = jobs[degree] || jobs['Other'];
+    const degree = params.get('degree') || 'Other';
+    const work_type = params.get('work_type') || 'In-Person';
+
+    const degreeJobs = allJobs[degree] || allJobs['Other'];
+    const matched = degreeJobs[work_type] || degreeJobs['In-Person'];
 
     const container = document.getElementById('matches');
-    matched.forEach((job, i) => {
-      const confirmURL = `confirm.html?job=${encodeURIComponent(job.title)}&employer=${encodeURIComponent(job.employer)}&location=${encodeURIComponent(job.location)}&hours=${encodeURIComponent(job.hours)}`;
-      container.innerHTML += `
-        <div class="bg-white rounded-2xl shadow p-6 mb-4 border-l-4 ${i === 0 ? 'border-green-600' : 'border-green-200'}">
-          <div class="flex justify-between items-start mb-2">
-            <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">${job.badge}</span>
-            <span class="text-green-800 font-extrabold text-lg">${job.wage}</span>
-          </div>
-          <h2 class="font-extrabold text-green-900 text-xl mt-2">${job.title}</h2>
-          <p class="text-green-600 font-semibold text-sm mb-2">${job.employer}</p>
-          <p class="text-gray-500 text-xs mb-3">${job.location}</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="border border-green-200 text-green-700 text-xs px-3 py-1 rounded-full">${job.hours}</span>
-            <span class="border border-green-200 text-green-700 text-xs px-3 py-1 rounded-full">W-2 Employed</span>
-          </div>
-          <a href="${confirmURL}" class="block w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 rounded-xl text-center text-sm">Select This Placement →</a>
-        </div>`;
+    matched.forEach(function(job, i) {
+      const confirmURL = 'confirm.html?job=' + encodeURIComponent(job.title) + '&employer=' + encodeURIComponent(job.employer) + '&location=' + encodeURIComponent(job.location) + '&hours=' + encodeURIComponent(job.hours);
+      const typeColor = job.type === 'Remote' ? 'bg-blue-100 text-blue-700' : job.type === 'Hybrid' ? 'bg-purple-100 text-purple-700' : 'bg-green-100 text-green-700';
+      container.innerHTML += '<div class="bg-white rounded-2xl shadow p-6 mb-4 border-l-4 ' + (i === 0 ? 'border-green-600' : 'border-green-200') + '"><div class="flex justify-between items-start mb-2"><span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">' + job.badge + '</span><span class="text-green-800 font-extrabold text-lg">' + job.wage + '</span></div><h2 class="font-extrabold text-green-900 text-xl mt-2">' + job.title + '</h2><p class="text-green-600 font-semibold text-sm mb-2">' + job.employer + '</p><p class="text-gray-500 text-xs mb-3">' + job.location + '</p><div class="flex flex-wrap gap-2 mb-4"><span class="border border-green-200 text-green-700 text-xs px-3 py-1 rounded-full">' + job.hours + '</span><span class="border border-green-200 text-green-700 text-xs px-3 py-1 rounded-full">W-2 Employed</span><span class="text-xs px-3 py-1 rounded-full ' + typeColor + '">' + job.type + '</span></div><a href="' + confirmURL + '" class="block w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 rounded-xl text-center text-sm">Select This Placement →</a></div>';
     });
   </script>
 </body>
