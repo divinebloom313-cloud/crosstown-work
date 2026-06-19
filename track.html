@@ -3,80 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crosstown Work — Placement Tracking</title>
+  <title>Crosstown Work | My Placement</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-green-50 min-h-screen p-4">
   <div class="max-w-md mx-auto">
-
     <div class="text-center mb-6 pt-4">
       <span class="bg-green-700 text-white text-xs font-bold tracking-widest uppercase px-4 py-1 rounded-full">Crosstown Work</span>
-      <h1 class="text-2xl font-extrabold text-green-900 mt-4">How Did It Go?</h1>
-      <p class="text-green-700 text-sm mt-2">Your feedback helps us match you better next time.</p>
+      <h1 class="text-2xl font-extrabold text-green-900 mt-4">My Placement</h1>
+      <p class="text-green-700 text-sm mt-2">Track your hours, earnings, and placement status.</p>
     </div>
 
-    <!-- Placement Summary -->
-    <div class="bg-white rounded-2xl shadow p-5 mb-4 border-l-4 border-green-600">
-      <p class="text-xs font-bold text-green-700 uppercase tracking-widest mb-2">Completed Placement</p>
-      <h2 class="text-lg font-extrabold text-green-900">Billing Assistant</h2>
-      <p class="text-green-600 font-medium text-sm">Boston Medical Center</p>
-      <div class="flex gap-4 mt-3">
-        <div class="text-center">
-          <p class="text-xs text-gray-500">Hours Worked</p>
-          <p class="text-lg font-extrabold text-green-900">20</p>
+    <div id="placement-info" class="bg-white rounded-2xl shadow p-6 mb-4 border-l-4 border-green-600">
+      <p class="text-xs font-bold text-green-700 uppercase tracking-widest mb-3">Current Placement</p>
+      <h2 id="job-title" class="text-xl font-extrabold text-green-900">Your Placement</h2>
+      <p id="job-employer" class="text-green-600 font-semibold mb-1"></p>
+      <p id="job-location" class="text-gray-500 text-sm"></p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow p-6 mb-4">
+      <p class="text-xs font-bold text-green-700 uppercase tracking-widest mb-4">This Week</p>
+      <div class="grid grid-cols-3 gap-4 text-center">
+        <div>
+          <p class="text-2xl font-extrabold text-green-900">0</p>
+          <p class="text-xs text-gray-500 mt-1">Hours Worked</p>
         </div>
-        <div class="text-center">
-          <p class="text-xs text-gray-500">Total Earned</p>
-          <p class="text-lg font-extrabold text-green-900">$360</p>
+        <div>
+          <p class="text-2xl font-extrabold text-green-900">$0</p>
+          <p class="text-xs text-gray-500 mt-1">Total Earned</p>
         </div>
-        <div class="text-center">
-          <p class="text-xs text-gray-500">Status</p>
-          <p class="text-lg font-extrabold text-green-600">Paid ✓</p>
+        <div>
+          <p class="text-2xl font-extrabold text-green-600">Active ✓</p>
+          <p class="text-xs text-gray-500 mt-1">Status</p>
         </div>
       </div>
     </div>
 
-    <!-- Rate Your Experience -->
     <div class="bg-white rounded-2xl shadow p-6 mb-4">
       <p class="text-xs font-bold text-green-700 uppercase tracking-widest mb-4">Rate Your Experience</p>
       <div class="space-y-4">
         <div>
           <p class="text-sm font-bold text-green-900 mb-2">How was the work environment?</p>
           <div class="flex gap-2">
-            <button class="flex-1 py-2 rounded-xl border-2 border-green-200 text-sm font-bold text-green-700 hover:bg-green-50">😔 Poor</button>
-            <button class="flex-1 py-2 rounded-xl border-2 border-green-200 text-sm font-bold text-green-700 hover:bg-green-50">😐 Okay</button>
-            <button class="flex-1 py-2 rounded-xl border-2 border-green-600 bg-green-50 text-sm font-bold text-green-700">😊 Great</button>
+            <button onclick="rate(this,'env')" class="flex-1 border border-green-200 rounded-xl py-2 text-sm">😞 Poor</button>
+            <button onclick="rate(this,'env')" class="flex-1 border border-green-200 rounded-xl py-2 text-sm">😐 Okay</button>
+            <button onclick="rate(this,'env')" class="flex-1 border border-green-200 rounded-xl py-2 text-sm">😊 Great</button>
           </div>
         </div>
         <div>
           <p class="text-sm font-bold text-green-900 mb-2">Was this role relevant to your degree?</p>
           <div class="flex gap-2">
-            <button class="flex-1 py-2 rounded-xl border-2 border-green-200 text-sm font-bold text-green-700 hover:bg-green-50">Not really</button>
-            <button class="flex-1 py-2 rounded-xl border-2 border-green-200 text-sm font-bold text-green-700 hover:bg-green-50">Somewhat</button>
-            <button class="flex-1 py-2 rounded-xl border-2 border-green-600 bg-green-50 text-sm font-bold text-green-700">Very much</button>
+            <button onclick="rate(this,'rel')" class="flex-1 border border-green-200 rounded-xl py-2 text-sm">Not really</button>
+            <button onclick="rate(this,'rel')" class="flex-1 border border-green-200 rounded-xl py-2 text-sm">Somewhat</button>
+            <button onclick="rate(this,'rel')" class="flex-1 border border-green-200 rounded-xl py-2 text-sm">Very much</button>
           </div>
         </div>
         <div>
           <p class="text-sm font-bold text-green-900 mb-2">Did the employer mention hiring you permanently?</p>
           <div class="flex gap-2">
-            <button class="flex-1 py-2 rounded-xl border-2 border-green-200 text-sm font-bold text-green-700 hover:bg-green-50">No</button>
-            <button class="flex-1 py-2 rounded-xl border-2 border-green-200 text-sm font-bold text-green-700 hover:bg-green-50">Maybe</button>
-            <button class="flex-1 py-2 rounded-xl border-2 border-green-600 bg-green-50 text-sm font-bold text-green-700">Yes!</button>
+            <button onclick="rate(this,'hire')" class="flex-1 border border-green-200 rounded-xl py-2 text-sm">No</button>
+            <button onclick="rate(this,'hire')" class="flex-1 border border-green-200 rounded-xl py-2 text-sm">Maybe</button>
+            <button onclick="rate(this,'hire')" class="flex-1 border border-green-200 rounded-xl py-2 text-sm">Yes!</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Next Steps -->
-    <div class="bg-green-700 rounded-2xl p-6 mb-8 text-white">
-      <p class="text-xs font-bold uppercase tracking-widest opacity-70 mb-2">What's Next</p>
-      <h3 class="text-lg font-extrabold mb-1">Ready for your next placement?</h3>
-      <p class="text-sm opacity-80 mb-4">Based on your experience we'll refine your matches and find you an even better fit.</p>
-      <button class="w-full bg-white text-green-700 font-bold py-3 rounded-xl hover:bg-green-50 transition">
-        Find My Next Match →
-      </button>
-    </div>
-
+    <a href="index.html" class="block w-full bg-green-700 text-white font-bold py-3 rounded-xl text-center text-sm mb-6">
+      Find My Next Match →
+    </a>
   </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const job = params.get('job') || localStorage.getItem('job') || 'Your Placement';
+    const employer = params.get('employer') || localStorage.getItem('employer') || '';
+    const location = params.get('location') || localStorage.getItem('location') || '';
+
+    document.getElementById('job-title').textContent = job;
+    document.getElementById('job-employer').textContent = employer;
+    document.getElementById('job-location').textContent = location;
+
+    function rate(btn, group) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('button').forEach(b => {
+        b.classList.remove('bg-green-700', 'text-white', 'border-green-700');
+      });
+      btn.classList.add('bg-green-700', 'text-white', 'border-green-700');
+    }
+  </script>
 </body>
 </html>
