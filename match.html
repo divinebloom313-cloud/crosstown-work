@@ -3,81 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crosstown Work | Your Matches</title>
+  <title>Crosstown Work | Placement Confirmation</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-green-50 min-h-screen p-4">
   <div class="max-w-md mx-auto">
     <div class="text-center mb-6 pt-4">
       <span class="bg-green-700 text-white text-xs font-bold tracking-widest uppercase px-4 py-1 rounded-full">Crosstown Work</span>
-      <h1 class="text-2xl font-extrabold text-green-900 mt-4">Your Matches</h1>
-      <p class="text-green-700 text-sm mt-2">Based on your degree — here are your field-matched placements in Boston.</p>
+      <h1 class="text-2xl font-extrabold text-green-900 mt-4">Confirm Your Placement</h1>
+      <p class="text-green-700 text-sm mt-2">Review your placement details and confirm to get started.</p>
     </div>
-    <div id="matches"></div>
+
+    <div id="placement-card" class="bg-white rounded-2xl shadow p-6 mb-4 border-l-4 border-green-600"></div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-5 mb-4">
+      <p class="text-xs font-bold text-green-700 uppercase tracking-widest mb-3">Massachusetts Temporary Workers Right to Know</p>
+      <ul class="text-sm text-green-800 space-y-2">
+        <li>✓ You are employed by Crosstown Work as a W-2 employee</li>
+        <li>✓ Your pay rate is $18.00/hr — paid weekly</li>
+        <li>✓ You have the right to know your worksite employer</li>
+        <li>✓ You may not be charged for transportation or equipment</li>
+      </ul>
+    </div>
+
+    <a href="training.html" class="block w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 rounded-xl text-center text-sm mb-3">
+      Confirm & Start Training →
+    </a>
+    <a href="match.html" class="block w-full border border-green-300 text-green-700 font-bold py-3 rounded-xl text-center text-sm">
+      ← View Other Matches
+    </a>
   </div>
 
   <script>
-    const jobs = {
-      "Business / Finance": [
-        { title: "Billing Assistant", employer: "Boston Medical Center", desc: "Support the billing team with insurance verification, records entry, and patient account coordination.", hours: "20 hrs/week", location: "South End", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Budget Tracking Assistant", employer: "City of Boston — Mayor's Office", desc: "Help track departmental spending, prepare budget summaries, and support financial reporting.", hours: "25 hrs/week", location: "Downtown", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Accounts Payable Clerk", employer: "Brigham and Women's Hospital", desc: "Process invoices, reconcile accounts, and support the finance team with data entry and reporting.", hours: "20 hrs/week", location: "Longwood", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Healthcare / Nursing": [
-        { title: "Patient Care Coordinator", employer: "Boston Children's Hospital", desc: "Coordinate patient appointments, manage records, and support clinical staff with administrative tasks.", hours: "20 hrs/week", location: "Longwood", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Health Records Clerk", employer: "Mass General Hospital", desc: "Maintain and organize patient health records, assist with data entry and record retrieval.", hours: "25 hrs/week", location: "West End", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Community Health Worker", employer: "Boston Public Health Commission", desc: "Connect residents to health resources, conduct outreach, and support wellness programs.", hours: "20 hrs/week", location: "Roxbury", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Education / Social Work": [
-        { title: "Program Assistant", employer: "Boston Public Schools", desc: "Support teachers and program coordinators with administrative tasks, data entry, and student engagement.", hours: "20 hrs/week", location: "Dorchester", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Case Management Assistant", employer: "DHCD — City of Boston", desc: "Assist case managers with documentation, client intake, and resource coordination for housing programs.", hours: "25 hrs/week", location: "Downtown", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Youth Program Coordinator", employer: "Boys & Girls Club of Boston", desc: "Plan and support youth programs, track attendance, and coordinate with program staff.", hours: "20 hrs/week", location: "Roxbury", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Legal / Government": [
-        { title: "Legal Administrative Assistant", employer: "Suffolk County DA's Office", desc: "Support attorneys with document preparation, filing, scheduling, and case tracking.", hours: "20 hrs/week", location: "Downtown", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Policy Research Assistant", employer: "City of Boston — City Council", desc: "Research legislation, prepare briefing documents, and support council staff with policy analysis.", hours: "25 hrs/week", location: "Government Center", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Compliance Clerk", employer: "Massachusetts State Ethics Commission", desc: "Support compliance reviews, maintain filing systems, and assist with regulatory documentation.", hours: "20 hrs/week", location: "Downtown", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Technology / Engineering": [
-        { title: "IT Support Technician", employer: "Boston Public Schools", desc: "Provide technical support to staff and students, troubleshoot hardware and software issues.", hours: "20 hrs/week", location: "Citywide", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Data Entry Analyst", employer: "Mass General Brigham", desc: "Support data teams with entry, validation, and quality checks across clinical databases.", hours: "25 hrs/week", location: "Longwood", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Systems Support Clerk", employer: "City of Boston — DoIT", desc: "Assist the technology department with system documentation, user support, and ticket tracking.", hours: "20 hrs/week", location: "Downtown", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Arts / Communications": [
-        { title: "Communications Assistant", employer: "Boston Arts Commission", desc: "Support communications team with content creation, social media, and event coordination.", hours: "20 hrs/week", location: "Downtown", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Marketing Coordinator", employer: "Greater Boston Convention & Visitors Bureau", desc: "Assist with marketing campaigns, content scheduling, and community outreach materials.", hours: "25 hrs/week", location: "Back Bay", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Media Relations Assistant", employer: "WGBH Boston", desc: "Support the communications team with press materials, media tracking, and event logistics.", hours: "20 hrs/week", location: "Brighton", wage: "$34.00/hr", badge: "Strong Match" }
-      ],
-      "Other": [
-        { title: "Administrative Assistant", employer: "City of Boston", desc: "Provide general administrative support including scheduling, filing, and correspondence.", hours: "20 hrs/week", location: "Downtown", wage: "$34.00/hr", badge: "Best Match" },
-        { title: "Office Coordinator", employer: "Boston Housing Authority", desc: "Support office operations, manage intake forms, and assist staff with daily administrative tasks.", hours: "25 hrs/week", location: "Citywide", wage: "$34.00/hr", badge: "Strong Match" },
-        { title: "Community Liaison", employer: "Boston Neighborhood Network", desc: "Connect community members to services, coordinate outreach events, and maintain records.", hours: "20 hrs/week", location: "Roxbury", wage: "$34.00/hr", badge: "Strong Match" }
-      ]
-    };
-
     const params = new URLSearchParams(window.location.search);
-    let degree = params.get('degree') || sessionStorage.getItem('degree') || 'Other';
-    const matched = jobs[degree] || jobs['Other'];
+    const job = params.get('job') || 'Administrative Assistant';
+    const employer = params.get('employer') || 'City of Boston';
+    const location = params.get('location') || 'Downtown';
+    const hours = params.get('hours') || '20 hrs/week';
 
-    const container = document.getElementById('matches');
-    matched.forEach((job, i) => {
-      container.innerHTML += `
-        <div class="bg-white rounded-2xl shadow p-6 mb-4 border-l-4 ${i === 0 ? 'border-green-600' : 'border-green-200'}">
-          <div class="flex justify-between items-start mb-2">
-            <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">${job.badge}</span>
-            <span class="text-green-800 font-extrabold text-lg">${job.wage}</span>
-          </div>
-          <h2 class="font-extrabold text-green-900 text-xl mt-2">${job.title}</h2>
-          <p class="text-green-600 font-semibold text-sm mb-2">${job.employer}</p>
-          <p class="text-gray-600 text-sm mb-3">${job.desc}</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="border border-green-200 text-green-700 text-xs px-3 py-1 rounded-full">${job.hours}</span>
-            <span class="border border-green-200 text-green-700 text-xs px-3 py-1 rounded-full">W-2 Employed</span>
-            <span class="border border-green-200 text-green-700 text-xs px-3 py-1 rounded-full">${job.location}</span>
-          </div>
-          <a href="confirm.html" class="block w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 rounded-xl text-center text-sm">Select This Placement →</a>
-        </div>`;
-    });
+    const start = new Date();
+    start.setDate(start.getDate() + (7 - start.getDay() + 1) % 7 + 14);
+    const startDate = start.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+
+    document.getElementById('placement-card').innerHTML = `
+      <p class="text-xs font-bold text-green-700 uppercase tracking-widest mb-3">Your Placement</p>
+      <h2 class="text-xl font-extrabold text-green-900">${job}</h2>
+      <p class="text-green-600 font-semibold mb-1">${employer}</p>
+      <p class="text-gray-500 text-sm mb-4">${location}</p>
+      <div class="space-y-2 text-sm">
+        <div class="flex justify-between"><span class="text-gray-500">Start Date</span><span class="font-bold text-green-900">${startDate}</span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Hours</span><span class="font-bold text-green-900">${hours}</span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Your Pay Rate</span><span class="font-bold text-green-900">$18.00/hr</span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Employment Type</span><span class="font-bold text-green-900">W-2 Employee</span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Weekly Earnings</span><span class="font-bold text-green-900">$360.00 est.</span></div>
+      </div>`;
   </script>
 </body>
 </html>
